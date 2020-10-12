@@ -11,6 +11,8 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from 'material-ui/core/InputLabel';
 import Input from 'material-ui/core/Input';
 import PropTypes from 'prop-types';
+import FormHelpertext from '@material-ui/core/FormHelperText';
+
 
 
 
@@ -46,7 +48,8 @@ class header extends Component{
         super();
         this.state={
             modalIsOpen:false,
-            value:0
+            value:0,
+            usernamerequired:"dispNone"
 
         };
     }
@@ -60,6 +63,12 @@ class header extends Component{
     tabChangeHandler=(event,value)=>{
         this.setState({value});
     }
+    loginclickHandler=()=>{
+        this.state.username===""? this.setState({usernamerequired:"dispBlock"}): 
+        this.setState({userNamerequired:"dispNone"})
+    }
+    inputUsernameChangeHandler=()=>
+        this.setState({username:e.target.value})
     render(){
         return(
             <div>
@@ -89,7 +98,7 @@ class header extends Component{
                         <InputLabel htmlFor="userName">
                             UserName
                           </InputLabel>
-                          <Input id="userName" type="text">
+                          <Input id="userName" type="text"username={this.state.username} onChange={this.inputUsernameChangeHandler}>
                           </Input>
                     </FormControl>
                     <FormControl required><br/><br/>
@@ -97,8 +106,11 @@ class header extends Component{
                           </InputLabel>
                           <Input id="password" type="password">
                           </Input>
+                          <FormHelpertext>{className=this.state.userNamerequired}
+                          <span className="red">required</span>
+                          </FormHelpertext>
                     </FormControl>
-                    <Button variant="contained" color="primary">LOGIN</Button>
+                    <Button variant="contained" color="primary" onClick={this.loginclickHandler}>LOGIN</Button>
                     </TabContainer>
                     }
                 </Modal>
