@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from 'material-ui/core/InputLabel';
 import Input from 'material-ui/core/Input';
+import PropTypes from 'prop-types';
 
 
 
@@ -24,11 +25,14 @@ const customStyles={
         marginRight:'-50%',
         transform:'translate(-50%,-50%)'
     }
+    TabContainer.propTypes = {
+        children: PropTypes.node.isRequired
+    }
 
 };
 const TabContainer=function(){
     return(
-        <Typography component="div" style={{padding:0}}>
+        <Typography component="div" style={{padding:0,textAlign:"center"}}>
        {Props.children}
 
         </Typography>
@@ -78,6 +82,7 @@ class header extends Component{
     <Tabs className="tabs" value={this.state.value} onChange={this.tabChangeHandler}>
                         <Tab label="Login" />
                         <Tab label="Register" />
+                        {this.state.value===0
                     </Tabs>
                     <TabContainer>
                     <FormControl required>
@@ -95,6 +100,7 @@ class header extends Component{
                     </FormControl>
                     <Button variant="contained" color="primary">LOGIN</Button>
                     </TabContainer>
+                    }
                 </Modal>
          </div>
         );
