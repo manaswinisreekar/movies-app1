@@ -75,7 +75,7 @@ class header extends Component{
         onRequestClose={this.closeModal}
         style={customStyles}>
 
-    <Tabs value={this.state.value} onChange={this.tabChangeHandler}>
+    <Tabs className="tabs" value={this.state.value} onChange={this.tabChangeHandler}>
                         <Tab label="Login" />
                         <Tab label="Register" />
                     </Tabs>
@@ -87,13 +87,13 @@ class header extends Component{
                           <Input id="userName" type="text">
                           </Input>
                     </FormControl>
-                    <FormControl required>
+                    <FormControl required><br/><br/>
                         <InputLabel htmlFor="Password">password
                           </InputLabel>
                           <Input id="password" type="password">
                           </Input>
                     </FormControl>
-                    
+                    <Button variant="contained" color="primary">LOGIN</Button>
                     </TabContainer>
                 </Modal>
          </div>
